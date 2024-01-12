@@ -42,13 +42,15 @@ fun main() {
         println(tableHeader)
 
         sections.sections[0].data.forEach { it ->
-            val player = it.row
-            println("|-")
-            print("| style=\"text-align:left;\"|[[${getWikiName(player!!.name)}]] || ${player.gamesPlayed} || ${player.goals} || ${player.assists} || ${player.points} || ${player.shots} || ")
-            if (player.plusMinus!!.toInt() > 0) {
-                print("+")
+            val player = it.row!!
+            if (player.position != "G") {
+                println("|-")
+                print("| style=\"text-align:left;\"|[[${getWikiName(player.name)}]] || ${player.gamesPlayed} || ${player.goals} || ${player.assists} || ${player.points} || ${player.shots} || ")
+                if (player.plusMinus!!.toInt() > 0) {
+                    print("+")
+                }
+                println("${player.plusMinus} || ${player.penaltyMinutes}")
             }
-            println("${player.plusMinus} || ${player.penaltyMinutes}")
         }
         println("|}")
     }
