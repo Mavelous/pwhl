@@ -12,7 +12,6 @@ repositories {
 
 dependencies {
     implementation(libs.guava)
-    implementation("it.skrape:skrapeit:1.2.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("org.json:json:20231013")

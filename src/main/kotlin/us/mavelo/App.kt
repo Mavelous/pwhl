@@ -1,10 +1,5 @@
 package us.mavelo
 
-import it.skrape.core.htmlDocument
-import it.skrape.fetcher.HttpFetcher
-import it.skrape.fetcher.extractIt
-import it.skrape.fetcher.skrape
-import it.skrape.selects.html5.*
 import kotlinx.serialization.json.Json
 import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.Sections
