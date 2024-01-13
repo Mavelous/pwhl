@@ -14,8 +14,8 @@ import org.json.JSONObject
 class FileReaderTest {
 	@Test
 	fun strippingCharactersFromOriginalResultsInSameContent() {
-		val originalContent: String = this::class.java.getResource("/data.original.txt")?.readText(UTF_8) ?: ""
-		val jsonContent: String = this::class.java.getResource("/data.json")?.readText(UTF_8) ?: ""
+		val originalContent: String = this::class.java.getResource("/skater_data.original.txt")?.readText(UTF_8) ?: ""
+		val jsonContent: String = this::class.java.getResource("/skater_data.json")?.readText(UTF_8) ?: ""
 
 		assertEquals((originalContent.length.minus(4)), jsonContent.length)
 
@@ -28,7 +28,7 @@ class FileReaderTest {
 
 	@Test
 	fun canParseJsonAndTurnItIntoObjects() {
-		val jsonContent: String = this::class.java.getResource("/data.formatted.json")?.readText(UTF_8) ?: ""
+		val jsonContent: String = this::class.java.getResource("/skater_data.formatted.json")?.readText(UTF_8) ?: ""
 
 		assertTrue(jsonContent.length > 1)
 
@@ -43,8 +43,6 @@ class FileReaderTest {
 
 	@Test
 	fun canReadFromWebpageAndParseToJson() {
-		val webOrl = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=6&position=skaters&rookies=0&statsType=standard&rosterstatus=undefined&site_id=3&first=0&limit=20&sort=goals&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
-//		val webUrl = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=2&position=skaters&rookies=0&statsType=standard&rosterstatus=undefined&site_id=7&first=0&limit=20&sort=goals&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 		val webUrl = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=2&position=skaters&statsType=standard&sort=goals&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 
 		var text = webUrl.readText()
