@@ -1,8 +1,6 @@
-package us.mavelo.pwhl.json.data
+package us.mavelo.pwhl.json.skater
 
 import kotlinx.serialization.Serializable
-import us.mavelo.pwhl.json.data.Prop
-import us.mavelo.pwhl.json.data.Row
 
 @Serializable
 data class Data (

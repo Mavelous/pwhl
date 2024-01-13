@@ -1,4 +1,4 @@
-package us.mavelo.pwhl.json.data
+package us.mavelo.pwhl.json.skater
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

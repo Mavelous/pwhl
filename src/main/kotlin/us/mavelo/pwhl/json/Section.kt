@@ -1,7 +1,7 @@
 package us.mavelo.pwhl.json
 
 import kotlinx.serialization.Serializable
-import us.mavelo.pwhl.json.data.Data
+import us.mavelo.pwhl.json.skater.Data
 import us.mavelo.pwhl.json.headers.Headers
 
 @Serializable

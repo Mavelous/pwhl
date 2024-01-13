@@ -1,6 +1,5 @@
-package us.mavelo.pwhl.json.data
+package us.mavelo.pwhl.json.skater
 
-import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
