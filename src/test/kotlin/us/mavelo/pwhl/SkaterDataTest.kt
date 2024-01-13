@@ -11,7 +11,7 @@ import kotlin.test.assertTrue
 import kotlin.text.Charsets.UTF_8
 import org.json.JSONObject
 
-class FileReaderTest {
+class SkaterDataTest {
 	@Test
 	fun strippingCharactersFromOriginalResultsInSameContent() {
 		val originalContent: String = this::class.java.getResource("/skater_data.original.txt")?.readText(UTF_8) ?: ""
