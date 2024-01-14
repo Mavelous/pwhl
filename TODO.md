@@ -3,4 +3,3 @@
 - [ ] Improve unit testing
 - [x] Add Gradle task to run the project
 - [x] Add goalie stats
-- [ ] Differentiate Skater-vs-Goalie Gradle tasks
