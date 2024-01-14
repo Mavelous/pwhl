@@ -5,6 +5,8 @@ import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.skater.SkaterSections
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import java.net.URL
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class App {
     val greeting: String
@@ -14,15 +16,23 @@ class App {
 }
 
 fun main() {
+    val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
+    val currentDate = LocalDateTime.now().format(formatter)
     for (team in Team.entries) {
         println("****************")
         println("[${team}]")
         println("****************")
 
+        println("""==Player statistics==
+
+{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
+
+===Skaters===
+""")
         printSkaterStats(team)
-        println("\n\n")
+        println("\n===Goaltenders===\n")
         printGoalieStats(team)
-        println("\n\n")
+        println("\n")
     }
 }
 
@@ -60,7 +70,7 @@ fun printGoalieStats(team: Team) {
     val tableHeader = """
         {| class="wikitable sortable" style="text-align:center"
         |-
-        |+ colspan="16" style="background:#fff; border-top:#5A288D 5px solid; border-bottom:#000 5px solid;"|Regular season<ref name="minnesota-goalie-stats" />
+        |+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
         |-
         ! Player !! {{abbr|GP|Games played}} !! {{abbr|TOI|Time on ice}} !! {{abbr|W|Win}} !! {{abbr|L|Loss}} !! {{abbr|OT|Overtime loss}} !! {{abbr|GA|Goals against}} !! {{abbr|GAA|Goals against average}} !! {{abbr|SA|Shots against}} !! {{abbr|SV%|Save percentage}} !! {{abbr|SO|Shutouts}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|PIM|Penalty minutes}} 
     """.trimIndent()
