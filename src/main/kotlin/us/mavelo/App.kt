@@ -28,11 +28,8 @@ fun main() {
 
 private fun printSkaterStats(team: Team) {
     val tableHeader = """
-            {| class="wikitable" style="text-align:center; width: 60em"
-            |-
-            ! |
-            ! rowspan="100" |
-            ! colspan="7" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
+            {| class="wikitable sortable" style="text-align:center;"
+            |+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
             |-
             ! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !! {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
         """.trimIndent()
