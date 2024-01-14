@@ -2,7 +2,7 @@ package us.mavelo.pwhl.json.goalie
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import us.mavelo.pwhl.json.player.Prop
+import us.mavelo.pwhl.json.common.Prop
 
 @Serializable
 data class Data (

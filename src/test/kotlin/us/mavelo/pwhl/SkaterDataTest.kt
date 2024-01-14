@@ -2,7 +2,7 @@ package us.mavelo.pwhl
 
 import kotlinx.serialization.json.Json
 import org.json.JSONException
-import us.mavelo.pwhl.json.Sections
+import us.mavelo.pwhl.json.skater.SkaterSections
 import java.net.URL
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -32,7 +32,7 @@ class SkaterDataTest {
 
 		assertTrue(jsonContent.length > 1)
 
-		val sections: Sections = Json.decodeFromString<Sections>(jsonContent)
+		val sections: SkaterSections = Json.decodeFromString<SkaterSections>(jsonContent)
 
 		assertNotNull(sections)
 
@@ -53,7 +53,7 @@ class SkaterDataTest {
 
 		assertTrue(isValidJson(text))
 
-		val sections: Sections = Json.decodeFromString<Sections>(text)
+		val sections: SkaterSections = Json.decodeFromString<SkaterSections>(text)
 
 		assertNotNull(sections)
 

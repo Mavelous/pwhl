@@ -2,7 +2,7 @@ package us.mavelo
 
 import kotlinx.serialization.json.Json
 import us.mavelo.pwhl.Team
-import us.mavelo.pwhl.json.Sections
+import us.mavelo.pwhl.json.skater.SkaterSections
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import java.net.URL
 
@@ -41,7 +41,7 @@ private fun printSkaterStats(team: Team) {
 
     val text = url.readText().drop(2).dropLast(2)
 
-    val sections: Sections = Json.decodeFromString<Sections>(text)
+    val sections: SkaterSections = Json.decodeFromString<SkaterSections>(text)
 
     println(tableHeader)
 
