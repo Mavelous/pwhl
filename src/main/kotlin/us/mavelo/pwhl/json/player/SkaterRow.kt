@@ -1,10 +1,10 @@
-package us.mavelo.pwhl.json.skater
+package us.mavelo.pwhl.json.player
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Row (
+data class SkaterRow (
 
   @SerialName("player_id") var playerId              : String? = null,
   var name                  : String? = null,

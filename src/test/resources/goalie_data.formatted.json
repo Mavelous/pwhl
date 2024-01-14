@@ -1,0 +1,425 @@
+{
+	"sections": [
+		{
+			"title": "",
+			"headers": {
+				"rank": {
+					"properties": {
+						"key": "rank",
+						"hidden": false,
+						"class": "",
+						"label": " ",
+						"title": "Rank",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"rookie": {
+					"properties": {
+						"key": "rookie",
+						"hidden": false,
+						"class": "",
+						"label": "",
+						"title": "Rookie",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"active": {
+					"properties": {
+						"key": "active",
+						"hidden": false,
+						"class": "active-ht",
+						"label": "",
+						"title": "Active",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"name": {
+					"properties": {
+						"key": "name",
+						"hidden": false,
+						"class": "",
+						"label": "Name",
+						"title": "Name",
+						"sortable": true,
+						"align": "left",
+						"highlight": false,
+						"sortKey": "name"
+					}
+				},
+				"team_code": {
+					"properties": {
+						"key": "team_code",
+						"hidden": false,
+						"class": "",
+						"label": "Team",
+						"title": "Name",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"games_played": {
+					"properties": {
+						"key": "games_played",
+						"hidden": false,
+						"class": "",
+						"label": "GP",
+						"title": "Games Played",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "gp"
+					}
+				},
+				"minutes_played": {
+					"properties": {
+						"key": "minutes_played",
+						"hidden": false,
+						"class": "",
+						"label": "Min",
+						"title": "Minutes Played",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "minutes"
+					}
+				},
+				"goals_against": {
+					"properties": {
+						"key": "goals_against",
+						"hidden": false,
+						"class": "",
+						"label": "GA",
+						"title": "Goals Against",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "goalsagainst"
+					}
+				},
+				"shutouts": {
+					"properties": {
+						"key": "shutouts",
+						"hidden": false,
+						"class": "",
+						"label": "SO",
+						"title": "Shutouts",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "shutouts"
+					}
+				},
+				"goals_against_average": {
+					"properties": {
+						"key": "goals_against_average",
+						"hidden": false,
+						"class": "",
+						"label": "GAA",
+						"title": "Goals Against Average",
+						"sortable": true,
+						"align": "center",
+						"highlight": true,
+						"sortKey": "gaa"
+					}
+				},
+				"wins": {
+					"properties": {
+						"key": "wins",
+						"hidden": false,
+						"class": "",
+						"label": "W",
+						"title": "Wins",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "wins"
+					}
+				},
+				"losses": {
+					"properties": {
+						"key": "losses",
+						"hidden": false,
+						"class": "",
+						"label": "L",
+						"title": "Losses",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "losses"
+					}
+				},
+				"ot_losses": {
+					"properties": {
+						"key": "ot_losses",
+						"hidden": false,
+						"class": "",
+						"label": "OT",
+						"title": "Overtime",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "ot_losses"
+					}
+				},
+				"saves": {
+					"properties": {
+						"key": "saves",
+						"hidden": false,
+						"class": "",
+						"label": "SVS",
+						"title": "Saves",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"shots": {
+					"properties": {
+						"key": "shots",
+						"hidden": false,
+						"class": "",
+						"label": "SA",
+						"title": "Shots Against",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "shots"
+					}
+				},
+				"save_percentage": {
+					"properties": {
+						"key": "save_percentage",
+						"hidden": false,
+						"class": "",
+						"label": "SAV%",
+						"title": "Save Percentage",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "svpct"
+					}
+				},
+				"player_id": {
+					"properties": {
+						"key": "player_id",
+						"hidden": true,
+						"class": "",
+						"label": "",
+						"title": "",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": ""
+					}
+				},
+				"shootout_attempts": {
+					"properties": {
+						"key": "shootout_attempts",
+						"hidden": false,
+						"class": "",
+						"label": "SOA",
+						"title": "Shots received in Shootout",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "shootout_attempts"
+					}
+				},
+				"shootout_goals_against": {
+					"properties": {
+						"key": "shootout_goals_against",
+						"hidden": false,
+						"class": "",
+						"label": "SOGA",
+						"title": "Goals Against in Shootout",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "shootout_goals_against"
+					}
+				},
+				"shootout_percentage": {
+					"properties": {
+						"key": "shootout_percentage",
+						"hidden": false,
+						"class": "",
+						"label": "SO%",
+						"title": "Saving percentage in Shootout",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "shootout_percentage"
+					}
+				},
+				"goals": {
+					"properties": {
+						"key": "goals",
+						"hidden": false,
+						"class": "",
+						"label": "G",
+						"title": "Goals",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "goals"
+					}
+				},
+				"assists": {
+					"properties": {
+						"key": "assists",
+						"hidden": false,
+						"class": "",
+						"label": "A",
+						"title": "Assists",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "assists"
+					}
+				},
+				"penalty_minutes": {
+					"properties": {
+						"key": "penalty_minutes",
+						"hidden": false,
+						"class": "",
+						"label": "PIM",
+						"title": "Penalty Minutes",
+						"sortable": true,
+						"align": "center",
+						"highlight": false,
+						"sortKey": "penalty_minutes"
+					}
+				}
+			},
+			"data": [
+				{
+					"prop": {
+						"rookie": {
+							"rookie": "0"
+						},
+						"name": {
+							"playerLink": "123",
+							"seoName": "Maddie Rooney"
+						},
+						"active": {
+							"active": "1"
+						},
+						"team_code": {
+							"teamLink": "2"
+						}
+					},
+					"row": {
+						"player_id": "123",
+						"rookie": "0",
+						"name": "Maddie Rooney",
+						"active": "1",
+						"team_code": "MIN",
+						"games_played": "1",
+						"minutes_played": "60:00",
+						"saves": "24",
+						"shots": "24",
+						"save_percentage": "1.000",
+						"goals_against": "0",
+						"shutouts": "1",
+						"wins": "1",
+						"losses": "0",
+						"ot_losses": "0",
+						"shootout_goals_against": "0",
+						"shootout_attempts": "0",
+						"goals": "0",
+						"assists": "0",
+						"penalty_minutes": "0",
+						"shootout_percentage": "0.000",
+						"goals_against_average": "0.00",
+						"rank": 1
+					}
+				},
+				{
+					"prop": {
+						"rookie": {
+							"rookie": "0"
+						},
+						"name": {
+							"playerLink": "22",
+							"seoName": "Nicole Hensley"
+						},
+						"active": {
+							"active": "1"
+						},
+						"team_code": {
+							"teamLink": "2"
+						}
+					},
+					"row": {
+						"player_id": "22",
+						"rookie": "0",
+						"name": "Nicole Hensley",
+						"active": "1",
+						"team_code": "MIN",
+						"games_played": "2",
+						"minutes_played": "120:00",
+						"saves": "64",
+						"shots": "67",
+						"save_percentage": "0.955",
+						"goals_against": "3",
+						"shutouts": "0",
+						"wins": "2",
+						"losses": "0",
+						"ot_losses": "0",
+						"shootout_goals_against": "0",
+						"shootout_attempts": "0",
+						"goals": "0",
+						"assists": "0",
+						"penalty_minutes": "0",
+						"shootout_percentage": "0.000",
+						"goals_against_average": "1.50",
+						"rank": 2
+					}
+				},
+				{
+					"prop": [],
+					"row": {
+						"games_played": "0",
+						"goals_against": "0",
+						"goals_against_average": "0.00",
+						"shots": "0",
+						"name": "Empty Net ",
+						"minutes_played": "0:00"
+					}
+				},
+				{
+					"prop": [],
+					"row": {
+						"games_played": "3",
+						"minutes_played": 180,
+						"saves": "88",
+						"shots": "91",
+						"save_percentage": "0.967",
+						"goals_against": "3",
+						"shutouts": 1,
+						"wins": "3",
+						"losses": "0",
+						"ot_losses": "0",
+						"shootout_goals_against": "0",
+						"shootout_attempts": "0",
+						"shootout_percentage": "0.000",
+						"goals_against_average": "1.00",
+						"name": "Totals "
+					}
+				}
+			]
+		}
+	]
+}

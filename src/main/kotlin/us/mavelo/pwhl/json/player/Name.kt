@@ -1,4 +1,4 @@
-package us.mavelo.pwhl.json.skater
+package us.mavelo.pwhl.json.player
 
 import kotlinx.serialization.Serializable
 

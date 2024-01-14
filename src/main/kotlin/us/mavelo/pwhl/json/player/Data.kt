@@ -1,4 +1,4 @@
-package us.mavelo.pwhl.json.skater
+package us.mavelo.pwhl.json.player
 
 import kotlinx.serialization.Serializable
 
@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 data class Data (
 
 		var prop : Prop? = Prop(),
-		var row  : Row?  = Row()
+		var row  : SkaterRow?  = SkaterRow()
 
 )
