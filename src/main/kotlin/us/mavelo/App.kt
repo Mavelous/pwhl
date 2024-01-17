@@ -114,6 +114,7 @@ fun getWikiName(name: String?): String? {
             "Brittany Howard",
             "Hannah Miller",
             "Emily Brown",
+            "Maureen Murphy",
             )
     if (name in dabNames) {
         return "$name (ice hockey)|$name"
