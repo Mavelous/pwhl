@@ -1,9 +1,10 @@
 package us.mavelo
 
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.Json.Default.decodeFromString
 import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.skater.SkaterSections
 import us.mavelo.pwhl.json.goalie.GoalieSections
+import us.mavelo.pwhl.json.skater.PrintableSkaterStats
 import java.net.URL
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -29,39 +30,57 @@ fun main() {
 
 ===Skaters===
 """)
-        printSkaterStats(team)
+        val skaterStats : ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
+        printSkaterStats(team, skaterStats)
         println("\n===Goaltenders===\n")
         printGoalieStats(team)
         println("\n")
     }
 }
 
-private fun printSkaterStats(team: Team) {
-    val tableHeader = """
+private fun collectSortedSkaters(team: Team) : ArrayList<PrintableSkaterStats> {
+    val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+    val text = url.readText().drop(2).dropLast(2)
+    val sections: SkaterSections = decodeFromString<SkaterSections>(text)
+    var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
+
+    sections.sections[0].data.forEach { it ->
+        if (it.teams != null && it.teams!!.isNotEmpty()) {
+            if (it.row!!.position != "G") {
+                if (it.teams!!.find { player -> player.active == "1"} != null) {
+                    val teamStats = it.teams!!.find { player -> player.active == "1"}!!
+                    val printedStats = PrintableSkaterStats(teamStats, it.row!!.name!!)
+                    skaterStats.add(printedStats)
+                }
+            }
+        } else {
+            if (it.row!!.position != "G" && it.row!!.active == "1") {
+                skaterStats.add(PrintableSkaterStats(it.row!!))
+            }
+        }
+    }
+
+    skaterStats.sortByDescending { it -> it.goals }
+    skaterStats.sortByDescending { it -> it.points }
+
+    return skaterStats
+}
+
+private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterStats>) {
+    println("""
             {| class="wikitable sortable" style="text-align:center;"
             |+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
             |-
             ! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !! {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
-        """.trimIndent()
+        """.trimIndent())
 
-    val url: URL = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
-
-    val text = url.readText().drop(2).dropLast(2)
-
-    val sections: SkaterSections = Json.decodeFromString<SkaterSections>(text)
-
-    println(tableHeader)
-
-    sections.sections[0].data.forEach { it ->
-        val player = it.row!!
-        if (player.position != "G") {
-            println("|-")
-            print("| style=\"text-align:left;\"|[[${getWikiName(player.name)}]] || ${player.gamesPlayed} || ${player.goals} || ${player.assists} || ${player.points} || ${player.shots} || ")
-            if (player.plusMinus!!.toInt() > 0) {
-                print("+")
-            }
-            println("${player.plusMinus} || ${player.penaltyMinutes}")
+    skaterStats.forEach { it ->
+        println("|-")
+        print("| style=\"text-align:left;\"|[[${getWikiName(it.name)}]] || ${it.gamesPlayed} || ${it.goals} || ${it.assists} || ${it.points} || ${it.shots} || ")
+        if (it.plusMinus!!.toInt() > 0) {
+            print("+")
         }
+        println("${it.plusMinus} || ${it.penaltyMinutes}")
     }
     println("|}")
 }
@@ -83,7 +102,7 @@ fun printGoalieStats(team: Team) {
             .replace("\"minutes_played\":(\\d+)".toRegex(), "\"minutes_played\": \"$1\"")
             .replace("\"shutouts\":(\\d+)".toRegex(), "\"shutouts\": \"$1\"")
 
-    val sections: GoalieSections = Json.decodeFromString<GoalieSections>(text)
+    val sections: GoalieSections = decodeFromString<GoalieSections>(text)
     val namesNotToPrint = arrayOf(
             "Empty Net ",
             "Totals "
