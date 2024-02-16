@@ -15,6 +15,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation("com.google.code.gson:gson:2.9.0")
     implementation("org.json:json:20231013")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.22")
 }
 
 testing {
