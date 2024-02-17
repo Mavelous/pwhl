@@ -5,7 +5,7 @@ import kotlin.test.assertEquals
 
 class TeamTest {
 	@Test fun allTeamsExist() {
-		assertEquals(6, Team.values().size)
+		assertEquals(6, Team.entries.size)
 	}
 
 	@Test fun boston() {
