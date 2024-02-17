@@ -1,8 +1,6 @@
 package us.mavelo.pwhl
 
 import kotlinx.serialization.json.Json.Default.decodeFromString
-import org.json.JSONException
-import org.json.JSONObject
 import us.mavelo.pwhl.json.skater.SkaterRow
 import us.mavelo.pwhl.json.skater.SkaterSections
 import java.net.URL
