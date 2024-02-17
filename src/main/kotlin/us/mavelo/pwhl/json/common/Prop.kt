@@ -9,10 +9,8 @@ import us.mavelo.pwhl.json.skater.TeamCode
 
 @Serializable
 data class Prop(
-
 		var name: Name? = Name(),
 		var active: Active? = Active(),
 		var rookie: Rookie? = Rookie(),
 		@SerialName("team_code") var teamCode: TeamCode? = TeamCode()
-
 )
