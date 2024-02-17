@@ -6,8 +6,8 @@ import us.mavelo.pwhl.json.goalie.Properties
 
 
 @Serializable
-data class PenaltyMinutes (
+data class PenaltyMinutes(
 
-  @SerialName("properties" ) var properties : Properties? = Properties()
+		@SerialName("properties") var properties: Properties? = Properties()
 
 )

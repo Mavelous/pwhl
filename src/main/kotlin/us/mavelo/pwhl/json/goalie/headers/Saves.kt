@@ -6,8 +6,8 @@ import us.mavelo.pwhl.json.goalie.Properties
 
 
 @Serializable
-data class Saves (
+data class Saves(
 
-  @SerialName("properties" ) var properties : Properties? = Properties()
+		@SerialName("properties") var properties: Properties? = Properties()
 
 )

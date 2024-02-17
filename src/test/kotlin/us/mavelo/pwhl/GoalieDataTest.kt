@@ -32,7 +32,7 @@ class GoalieDataTest {
 				?.replace("\"prop\": []", "\"prop\": {}")
 				?.replace("\"minutes_played\": (\\d+)".toRegex(), "\"minutes_played\": \"$1\"")
 				?.replace("\"shutouts\": (\\d+)".toRegex(), "\"shutouts\": \"$1\"")
-			?: ""
+				?: ""
 
 		assertTrue(jsonContent.length > 1)
 

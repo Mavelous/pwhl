@@ -3,8 +3,8 @@ package us.mavelo.pwhl.json.skater.headers
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FaceoffPct (
+data class FaceoffPct(
 
-  var properties : us.mavelo.pwhl.json.skater.headers.Properties? = us.mavelo.pwhl.json.skater.headers.Properties()
+		var properties: Properties? = Properties()
 
 )

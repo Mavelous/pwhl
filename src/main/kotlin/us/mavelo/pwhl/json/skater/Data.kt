@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 import us.mavelo.pwhl.json.common.Prop
 
 @Serializable
-data class Data (
-		var prop  : Prop? = Prop(),
-		var row   : SkaterRow?  = SkaterRow(),
-		var teams : ArrayList<Team>? = arrayListOf()
+data class Data(
+		var prop: Prop? = Prop(),
+		var row: SkaterRow? = SkaterRow(),
+		var teams: ArrayList<Team>? = arrayListOf()
 )

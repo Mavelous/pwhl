@@ -1,7 +1,6 @@
 package us.mavelo.pwhl.json.skater
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.Json.Default.decodeFromString
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -23,6 +22,7 @@ class RookieTest {
 
 		assertEquals("0", rookie.rookie)
 	}
+
 	@Test
 	fun canConstructRookieFromFile() {
 		val jsonContent: String = this::class.java.getResource("/json/skater/rookie.json")?.readText(UTF_8) ?: ""

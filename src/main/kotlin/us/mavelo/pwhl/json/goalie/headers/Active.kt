@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 import us.mavelo.pwhl.json.goalie.Properties
 
 @Serializable
-data class Active (
+data class Active(
 
-  @SerialName("properties" ) var properties : Properties? = Properties()
+		@SerialName("properties") var properties: Properties? = Properties()
 
 )
