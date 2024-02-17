@@ -1,10 +1,11 @@
 package us.mavelo.pwhl.json.common
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.Json.Default.decodeFromString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.text.Charsets.UTF_8
 
 class PropTest {
 	@Test
@@ -15,7 +16,7 @@ class PropTest {
 
 	@Test
 	fun canConstructProp() {
-		val prop: Prop = Json.decodeFromString("""{
+		val prop: Prop = decodeFromString("""{
 	"name": {
 		"playerLink": "100",
 		"seoName": "Natalie Spooner"
@@ -40,9 +41,9 @@ class PropTest {
 
 	@Test
 	fun canConstructPropFromFile() {
-		val jsonContent: String = this::class.java.getResource("/json/common/prop.json")?.readText(Charsets.UTF_8) ?: ""
+		val jsonContent: String = this::class.java.getResource("/json/common/prop.json")?.readText(UTF_8) ?: ""
 
-		val prop: Prop = Json.decodeFromString<Prop>(jsonContent)
+		val prop: Prop = decodeFromString<Prop>(jsonContent)
 
 		assertEquals("Natalie Spooner", prop.name!!.seoName)
 		assertEquals("1", prop.active!!.active)

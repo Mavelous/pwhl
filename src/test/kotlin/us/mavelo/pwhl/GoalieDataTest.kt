@@ -1,7 +1,7 @@
 package us.mavelo.pwhl
 
-import kotlinx.serialization.json.Json
-import org.json.JSONException
+import kotlinx.serialization.json.Json.Default.decodeFromString
+import us.mavelo.pwhl.json.goalie.GoalieRow
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import java.net.URL
 import kotlin.test.Test
@@ -9,7 +9,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 import kotlin.text.Charsets.UTF_8
-import org.json.JSONObject
 
 class GoalieDataTest {
 	@Test
@@ -28,7 +27,7 @@ class GoalieDataTest {
 
 	@Test
 	fun canParseJsonAndTurnItIntoObjects() {
-		var jsonContent: String = this::class.java.getResource("/goalie_data.formatted.json")
+		val jsonContent: String = this::class.java.getResource("/goalie_data.formatted.json")
 				?.readText(UTF_8)
 				?.replace("\"prop\": []", "\"prop\": {}")
 				?.replace("\"minutes_played\": (\\d+)".toRegex(), "\"minutes_played\": \"$1\"")
@@ -37,13 +36,12 @@ class GoalieDataTest {
 
 		assertTrue(jsonContent.length > 1)
 
-		val sections: GoalieSections = Json.decodeFromString<GoalieSections>(jsonContent)
+		val sections: GoalieSections = decodeFromString<GoalieSections>(jsonContent)
 
 		assertNotNull(sections)
-
-		sections.sections[0].data.forEach { it ->
-			println("Name: [${it.row!!.name}], goals: [${it.row!!.goals}]")
-		}
+		val player: GoalieRow = sections.sections[0].data[0].row!!
+		assertEquals("Maddie Rooney", player.name)
+		assertEquals("0.00", player.goalsAgainstAverage)
 	}
 
 	@Test
@@ -61,24 +59,11 @@ class GoalieDataTest {
 				.replace("\"minutes_played\":(\\d+)".toRegex(), "\"minutes_played\": \"$1\"")
 				.replace("\"shutouts\":(\\d+)".toRegex(), "\"shutouts\": \"$1\"")
 
-		assertTrue(isValidJson(text))
-
-		val sections: GoalieSections = Json.decodeFromString<GoalieSections>(text)
+		val sections: GoalieSections = decodeFromString<GoalieSections>(text)
 
 		assertNotNull(sections)
+		val player: GoalieRow = sections.sections[0].data[0].row!!
 
-		sections.sections[0].data.forEach { it ->
-			println("Name: [${it.row!!.name}], goals: [${it.row!!.goals}]")
-		}
+		assertTrue(player.name in arrayOf("Maddie Rooney", "Nicole Hensley"))
 	}
-
-	private fun isValidJson(input: String): Boolean {
-		try {
-			JSONObject(input)
-		} catch (e: JSONException) {
-			return false
-		}
-		return true
-	}
-
 }

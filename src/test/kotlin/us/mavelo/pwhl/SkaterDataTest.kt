@@ -1,7 +1,9 @@
 package us.mavelo.pwhl
 
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.Json.Default.decodeFromString
 import org.json.JSONException
+import org.json.JSONObject
+import us.mavelo.pwhl.json.skater.SkaterRow
 import us.mavelo.pwhl.json.skater.SkaterSections
 import java.net.URL
 import kotlin.test.Test
@@ -9,7 +11,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 import kotlin.text.Charsets.UTF_8
-import org.json.JSONObject
 
 class SkaterDataTest {
 	@Test
@@ -32,13 +33,11 @@ class SkaterDataTest {
 
 		assertTrue(jsonContent.length > 1)
 
-		val sections: SkaterSections = Json.decodeFromString<SkaterSections>(jsonContent)
+		val sections: SkaterSections = decodeFromString<SkaterSections>(jsonContent)
 
-		assertNotNull(sections)
-
-		sections.sections[0].data.forEach { it ->
-			println("Name: [${it.row!!.name}], goals: [${it.row!!.goals}]")
-		}
+		val player: SkaterRow = sections.sections[0].data[0].row!!
+		assertEquals("Emma Maltais", player.name)
+		assertEquals("1", player.goals)
 	}
 
 	@Test
@@ -51,24 +50,12 @@ class SkaterDataTest {
 
 		text = text.drop(2).dropLast(2)
 
-		assertTrue(isValidJson(text))
-
-		val sections: SkaterSections = Json.decodeFromString<SkaterSections>(text)
+		val sections: SkaterSections = decodeFromString<SkaterSections>(text)
 
 		assertNotNull(sections)
 
-		sections.sections[0].data.forEach { it ->
-			println("Name: [${it.row!!.name}], goals: [${it.row!!.goals}]")
-		}
+		val player: SkaterRow = sections.sections[0].data[0].row!!
+		assertEquals("Grace Zumwinkle", player.name)
+		assertEquals("6", player.goals)
 	}
-
-	private fun isValidJson(input: String): Boolean {
-		try {
-			JSONObject(input)
-		} catch (e: JSONException) {
-			return false
-		}
-		return true
-	}
-
 }
