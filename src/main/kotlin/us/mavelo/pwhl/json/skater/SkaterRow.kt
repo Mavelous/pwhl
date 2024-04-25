@@ -15,6 +15,8 @@ data class SkaterRow(
 		@SerialName("games_played") var gamesPlayed: String? = null,
 		var goals: String? = null,
 		var shots: String? = null,
+		var hits: String? = null,
+		@SerialName("ice_time_minutes_seconds") var iceTimeMinutesSeconds: String? = null,
 		@SerialName("shooting_percentage") var shootingPercentage: String? = null,
 		var assists: String? = null,
 		var points: String? = null,

@@ -33,6 +33,8 @@ data class Headers(
 		@SerialName("shootout_attempts") var shootoutAttempts: ShootoutAttempts? = ShootoutAttempts(),
 		@SerialName("shootout_winning_goals") var shootoutWinningGoals: ShootoutWinningGoals? = ShootoutWinningGoals(),
 		@SerialName("shootout_percentage") var shootoutPercentage: ShootoutPercentage? = ShootoutPercentage(),
+		@SerialName("ice_time_minutes_seconds") var iceTimeMinutesSeconds: IceTimeMinutesSeconds? = IceTimeMinutesSeconds(),
+		var hits: Hits? = Hits(),
 		@SerialName("player_id") var playerId: PlayerId? = PlayerId()
 
 )
