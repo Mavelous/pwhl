@@ -71,16 +71,20 @@ private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterS
 	{| class="wikitable sortable" style="text-align:center;"
 	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
 	|-
-	! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !! {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
+	! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !!data-sort-type="number"| {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
 """.trimIndent())
 
 	skaterStats.forEach { it ->
 		println("|-")
 		print("| style=\"text-align:left;\"|[[${getWikiName(it.name)}]] || ${it.gamesPlayed} || ${it.goals} || ${it.assists} || ${it.points} || ${it.shots} || ")
 		if (it.plusMinus!!.toInt() > 0) {
-			print("+")
+			print("{{sort|${it.plusMinus}|+${it.plusMinus}}}")
+		} else if (it.plusMinus.toInt() < 0) {
+			print("{{sort|${it.plusMinus}|${it.plusMinus.replace("-", "–")}}}")
+		} else {
+			print("{{sort|${it.plusMinus}|${it.plusMinus}}}")
 		}
-		println("${it.plusMinus} || ${it.penaltyMinutes}")
+		println(" || ${it.penaltyMinutes}")
 	}
 	println("|}")
 }
