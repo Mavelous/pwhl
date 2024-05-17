@@ -34,13 +34,16 @@ fun main() {
 		val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
 		printSkaterStats(team, skaterStats)
 		println("\n===Goaltenders===\n")
-		printGoalieStats(team)
+		if (team.teamNum != 4 && team.teamNum != 5) {
+			printGoalieStats(team)
+		}
 		println("\n")
 	}
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=3&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+//	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText().drop(2).dropLast(2)
 	val sections: SkaterSections = decodeFromString<SkaterSections>(text)
 	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
@@ -69,7 +72,7 @@ private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
 private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterStats>) {
 	println("""
 	{| class="wikitable sortable" style="text-align:center;"
-	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
+	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-stats" />
 	|-
 	! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !!data-sort-type="number"| {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
 """.trimIndent())
@@ -93,12 +96,13 @@ fun printGoalieStats(team: Team) {
 	val tableHeader = """
 	{| class="wikitable sortable" style="text-align:center"
 	|-
-	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
+	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-goalie-stats" />
 	|-
 	! Player !! {{abbr|GP|Games played}} !! {{abbr|TOI|Time on ice}} !! {{abbr|W|Win}} !! {{abbr|L|Loss}} !! {{abbr|OT|Overtime loss}} !! {{abbr|GA|Goals against}} !! {{abbr|GAA|Goals against average}} !! {{abbr|SA|Shots against}} !! {{abbr|SV%|Save percentage}} !! {{abbr|SO|Shutouts}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=3&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+//	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
