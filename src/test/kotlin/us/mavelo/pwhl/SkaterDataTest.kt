@@ -54,6 +54,6 @@ class SkaterDataTest {
 
 		val player: SkaterRow = sections.sections[0].data[0].row!!
 		assertEquals("Grace Zumwinkle", player.name)
-		assertEquals("6", player.goals)
+		assertEquals("11", player.goals)
 	}
 }

@@ -15,6 +15,9 @@ ij_smart_tabs = true
 ij_visual_guides =
 ij_wrap_on_typing = false
 
+[{src/test/resources/**}]
+ij_formatter_enabled = false
+
 [*.css]
 ij_css_align_closing_brace_with_properties = false
 ij_css_blank_lines_around_nested_selector = 1
