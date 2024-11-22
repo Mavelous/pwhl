@@ -42,8 +42,7 @@ fun main() {
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=3&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
-//	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=4&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText().drop(2).dropLast(2)
 	val sections: SkaterSections = decodeFromString<SkaterSections>(text)
 	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
@@ -101,8 +100,7 @@ fun printGoalieStats(team: Team) {
 	! Player !! {{abbr|GP|Games played}} !! {{abbr|TOI|Time on ice}} !! {{abbr|W|Win}} !! {{abbr|L|Loss}} !! {{abbr|OT|Overtime loss}} !! {{abbr|GA|Goals against}} !! {{abbr|GAA|Goals against average}} !! {{abbr|SA|Shots against}} !! {{abbr|SV%|Save percentage}} !! {{abbr|SO|Shutouts}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=3&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
-//	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=4&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
