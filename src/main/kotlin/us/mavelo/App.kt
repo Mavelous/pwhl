@@ -140,9 +140,21 @@ fun getWikiName(name: String?): String? {
 			"Hannah Miller",
 			"Emily Brown",
 			"Maureen Murphy",
+			"Claire Thompson",
 	)
 	if (name in dabNames) {
 		return "$name (ice hockey)|$name"
+	}
+
+	val accentedNames = mapOf(
+		"Chloe Aurard" to "Chloé Aurard",
+		"Elizabeth Giguère" to "Élizabeth Giguère",
+		"Klara Hymlarova" to "Klára Hymlárovaá",
+		"Maja Nylen Persson" to "Maja Nylén Persson",
+		"Jessica Digirolamo" to "Jessica DiGirolamo",
+	)
+	if (name in accentedNames) {
+		return accentedNames[name]
 	}
 
 	return name
