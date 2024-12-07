@@ -34,9 +34,7 @@ fun main() {
 		val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
 		printSkaterStats(team, skaterStats)
 		println("\n===Goaltenders===\n")
-		if (team.teamNum != 4 && team.teamNum != 5) {
-			printGoalieStats(team)
-		}
+		printGoalieStats(team)
 		println("\n")
 	}
 }
@@ -149,9 +147,10 @@ fun getWikiName(name: String?): String? {
 	val accentedNames = mapOf(
 		"Chloe Aurard" to "Chloé Aurard",
 		"Elizabeth Giguère" to "Élizabeth Giguère",
-		"Klara Hymlarova" to "Klára Hymlárovaá",
+		"Klara Hymlarova" to "Klára Hymlárová",
 		"Maja Nylen Persson" to "Maja Nylén Persson",
 		"Jessica Digirolamo" to "Jessica DiGirolamo",
+		"Clair Degeorge" to "Clair DeGeorge",
 	)
 	if (name in accentedNames) {
 		return accentedNames[name]
