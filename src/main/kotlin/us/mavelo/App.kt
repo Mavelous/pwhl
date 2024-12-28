@@ -71,12 +71,20 @@ private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterS
 	{| class="wikitable sortable" style="text-align:center;"
 	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
 	|-
-	! Player !! {{abbr|GP|Games played}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|Pts|Points}} !! {{abbr|SOG|Shots on Goal}} !!data-sort-type="number"| {{abbr|+/−|Plus/Minus}} !! {{abbr|PIM|Penalty minutes}}
+	! scope="col" | Player
+	! scope="col" | {{abbr|GP|Games played}}
+	! scope="col" | {{abbr|G|Goals}}
+	! scope="col" | {{abbr|A|Assists}}
+	! scope="col" | {{abbr|Pts|Points}}
+	! scope="col" | {{abbr|SOG|Shots on Goal}}
+	! scope="col" data-sort-type="number" | {{abbr|+/−|Plus/Minus}}
+	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent())
 
 	skaterStats.forEach { it ->
 		println("|-")
-		print("| style=\"text-align:left;\"|[[${getWikiName(it.name)}]] || ${it.gamesPlayed} || ${it.goals} || ${it.assists} || ${it.points} || ${it.shots} || ")
+		println("! scope=\"row\" style=\"text-align:left;\" | [[${getWikiName(it.name)}]]")
+		print("| ${it.gamesPlayed} || ${it.goals} || ${it.assists} || ${it.points} || ${it.shots} || ")
 		if (it.plusMinus!!.toInt() > 0) {
 			print("{{sort|${it.plusMinus}|+${it.plusMinus}}}")
 		} else if (it.plusMinus.toInt() < 0) {
@@ -95,7 +103,20 @@ fun printGoalieStats(team: Team) {
 	|-
 	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
 	|-
-	! Player !! {{abbr|GP|Games played}} !! {{abbr|TOI|Time on ice}} !! {{abbr|W|Win}} !! {{abbr|L|Loss}} !! {{abbr|OT|Overtime loss}} !! {{abbr|GA|Goals against}} !! {{abbr|GAA|Goals against average}} !! {{abbr|SA|Shots against}} !! {{abbr|SV%|Save percentage}} !! {{abbr|SO|Shutouts}} !! {{abbr|G|Goals}} !! {{abbr|A|Assists}} !! {{abbr|PIM|Penalty minutes}}
+	! scope="col" | Player
+	! scope="col" | {{abbr|GP|Games played}}
+	! scope="col" | {{abbr|TOI|Time on ice}}
+	! scope="col" | {{abbr|W|Win}}
+	! scope="col" | {{abbr|L|Loss}}
+	! scope="col" | {{abbr|OT|Overtime loss}}
+	! scope="col" | {{abbr|GA|Goals against}}
+	! scope="col" | {{abbr|GAA|Goals against average}}
+	! scope="col" | {{abbr|SA|Shots against}}
+	! scope="col" | {{abbr|SV%|Save percentage}}
+	! scope="col" | {{abbr|SO|Shutouts}}
+	! scope="col" | {{abbr|G|Goals}}
+	! scope="col" | {{abbr|A|Assists}}
+	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
 	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=5&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
@@ -118,7 +139,8 @@ fun printGoalieStats(team: Team) {
 
 		if (goalie.name !in namesNotToPrint) {
 			println("|-")
-			println("| style=\"text-align:left;\"|[[${goalie.name}]] || ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
+			println("! scope=\"row\" style=\"text-align:left;\" | [[${goalie.name}]]")
+			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
 		}
 	}
 
