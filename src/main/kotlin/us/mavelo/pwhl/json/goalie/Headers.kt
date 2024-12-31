@@ -21,6 +21,7 @@ data class Headers(
 		@SerialName("wins") var wins: Wins? = Wins(),
 		@SerialName("losses") var losses: Losses? = Losses(),
 		@SerialName("ot_losses") var otLosses: OtLosses? = OtLosses(),
+		@SerialName("shootout_losses") var shootoutLosses: ShootoutLosses? = ShootoutLosses(),
 		@SerialName("saves") var saves: Saves? = Saves(),
 		@SerialName("shots") var shots: Shots? = Shots(),
 		@SerialName("save_percentage") var savePercentage: SavePercentage? = SavePercentage(),

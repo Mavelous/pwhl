@@ -21,6 +21,7 @@ data class GoalieRow(
 		@SerialName("wins") var wins: String? = null,
 		@SerialName("losses") var losses: String? = null,
 		@SerialName("ot_losses") var otLosses: String? = null,
+		@SerialName("shootout_losses") var shootoutLosses: String? = null,
 		@SerialName("shootout_goals_against") var shootoutGoalsAgainst: String? = null,
 		@SerialName("shootout_attempts") var shootoutAttempts: String? = null,
 		@SerialName("goals") var goals: String? = null,

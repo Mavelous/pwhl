@@ -108,7 +108,8 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|TOI|Time on ice}}
 	! scope="col" | {{abbr|W|Win}}
 	! scope="col" | {{abbr|L|Loss}}
-	! scope="col" | {{abbr|OT|Overtime loss}}
+	! scope="col" | {{abbr|OT|Overtime losses}}
+	! scope="col" | {{abbr|SOL|Shootout losses}}
 	! scope="col" | {{abbr|GA|Goals against}}
 	! scope="col" | {{abbr|GAA|Goals against average}}
 	! scope="col" | {{abbr|SA|Shots against}}
@@ -140,7 +141,7 @@ fun printGoalieStats(team: Team) {
 		if (goalie.name !in namesNotToPrint) {
 			println("|-")
 			println("! scope=\"row\" style=\"text-align:left;\" | [[${goalie.name}]]")
-			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
+			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.shootoutLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
 		}
 	}
 
