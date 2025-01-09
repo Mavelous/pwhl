@@ -140,7 +140,7 @@ fun printGoalieStats(team: Team) {
 
 		if (goalie.name !in namesNotToPrint) {
 			println("|-")
-			println("! scope=\"row\" style=\"text-align:left;\" | [[${goalie.name}]]")
+			println("! scope=\"row\" style=\"text-align:left;\" | [[${getWikiName(goalie.name)}]]")
 			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.shootoutLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
 		}
 	}
