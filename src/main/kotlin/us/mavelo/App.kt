@@ -151,19 +151,20 @@ fun printGoalieStats(team: Team) {
 fun getWikiName(name: String?): String? {
 	val dabNames = arrayOf(
 			"Abby Cook",
-			"Maggie Flaherty",
-			"Hilary Knight",
-			"Sammy Davis",
-			"Emily Clark",
-			"Kateřina Mrázová",
-			"Taylor Baker",
 			"Brittany Howard",
-			"Hannah Miller",
-			"Emily Brown",
-			"Maureen Murphy",
 			"Claire Thompson",
-			"Taylor House",
+			"Emily Brown",
+			"Emily Clark",
+			"Hannah Miller",
+			"Hilary Knight",
+			"Kateřina Mrázová",
 			"Lucy Morgan",
+			"Maggie Flaherty",
+			"Maureen Murphy",
+			"Megan Carter",
+			"Sammy Davis",
+			"Taylor Baker",
+			"Taylor House",
 	)
 	if (name in dabNames) {
 		return "$name (ice hockey)|$name"
@@ -171,12 +172,12 @@ fun getWikiName(name: String?): String? {
 
 	val accentedNames = mapOf(
 		"Chloe Aurard" to "Chloé Aurard",
-		"Elizabeth Giguère" to "Élizabeth Giguère",
-		"Klara Hymlarova" to "Klára Hymlárová",
-		"Maja Nylen Persson" to "Maja Nylén Persson",
-		"Jessica Digirolamo" to "Jessica DiGirolamo",
 		"Clair Degeorge" to "Clair DeGeorge",
 		"Daniela Pejsova" to "Daniela Pejšová",
+		"Elizabeth Giguère" to "Élizabeth Giguère",
+		"Jessica Digirolamo" to "Jessica DiGirolamo",
+		"Klara Hymlarova" to "Klára Hymlárová",
+		"Maja Nylen Persson" to "Maja Nylén Persson",
 	)
 	if (name in accentedNames) {
 		return accentedNames[name]
