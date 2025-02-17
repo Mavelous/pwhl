@@ -178,6 +178,7 @@ fun getWikiName(name: String?): String? {
 		"Jessica Digirolamo" to "Jessica DiGirolamo",
 		"Klara Hymlarova" to "Klára Hymlárová",
 		"Maja Nylen Persson" to "Maja Nylén Persson",
+		"Klara Peslarova" to "Klára Peslarová",
 	)
 	if (name in accentedNames) {
 		return accentedNames[name]
