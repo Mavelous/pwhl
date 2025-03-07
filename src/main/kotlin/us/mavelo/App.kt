@@ -156,7 +156,6 @@ fun getWikiName(name: String?): String? {
 			"Emily Brown",
 			"Emily Clark",
 			"Hannah Miller",
-			"Hilary Knight",
 			"Kateřina Mrázová",
 			"Lucy Morgan",
 			"Maggie Flaherty",
