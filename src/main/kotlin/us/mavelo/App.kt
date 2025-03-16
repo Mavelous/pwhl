@@ -160,7 +160,6 @@ fun getWikiName(name: String?): String? {
 			"Lucy Morgan",
 			"Maggie Flaherty",
 			"Maureen Murphy",
-			"Megan Carter",
 			"Sammy Davis",
 			"Taylor Baker",
 			"Taylor House",
