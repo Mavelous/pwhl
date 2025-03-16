@@ -6,8 +6,7 @@ import us.mavelo.pwhl.json.common.Prop
 
 @Serializable
 data class Data(
-
 		@SerialName("prop") var prop: Prop? = Prop(),
-		@SerialName("row") var row: GoalieRow? = GoalieRow()
-
+		@SerialName("row") var row: GoalieRow? = GoalieRow(),
+		@SerialName("teams") var teams: ArrayList<Team>? = arrayListOf()
 )

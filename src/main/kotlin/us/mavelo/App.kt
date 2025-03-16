@@ -138,7 +138,7 @@ fun printGoalieStats(team: Team) {
 	sections.sections[0].data.forEach {
 		val goalie = it.row!!
 
-		if (goalie.name !in namesNotToPrint) {
+		if (goalie.name !in namesNotToPrint && goalie.active == "1") {
 			println("|-")
 			println("! scope=\"row\" style=\"text-align:left;\" | [[${getWikiName(goalie.name)}]]")
 			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.shootoutLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
