@@ -170,11 +170,13 @@ fun getWikiName(name: String?): String? {
 
 	val accentedNames = mapOf(
 		"Chloe Aurard" to "Chloé Aurard",
+		"Abby Boreen" to "Abigail Boreen",
 		"Clair Degeorge" to "Clair DeGeorge",
 		"Daniela Pejsova" to "Daniela Pejšová",
 		"Elizabeth Giguère" to "Élizabeth Giguère",
 		"Jessica Digirolamo" to "Jessica DiGirolamo",
 		"Klara Hymlarova" to "Klára Hymlárová",
+		"Kelly Ann Nadeau" to "Kelly-Ann Nadeau",
 		"Maja Nylen Persson" to "Maja Nylén Persson",
 		"Klara Peslarova" to "Klára Peslarová",
 	)
