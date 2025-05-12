@@ -1,6 +1,6 @@
 package us.mavelo
 
-import kotlinx.serialization.json.Json.Default.decodeFromString
+import kotlinx.serialization.json.Json
 import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import us.mavelo.pwhl.json.skater.PrintableSkaterStats
@@ -40,9 +40,10 @@ fun main() {
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=5&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText().drop(2).dropLast(2)
-	val sections: SkaterSections = decodeFromString<SkaterSections>(text)
+	val format = Json { isLenient = true }
+	val sections: SkaterSections = format.decodeFromString<SkaterSections>(text)
 	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
 
 	sections.sections[0].data.forEach { it ->
@@ -69,7 +70,7 @@ private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
 private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterStats>) {
 	println("""
 	{| class="wikitable sortable" style="text-align:center;"
-	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
+	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -101,7 +102,7 @@ fun printGoalieStats(team: Team) {
 	val tableHeader = """
 	{| class="wikitable sortable" style="text-align:center"
 	|-
-	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
+	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-goalie-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -120,15 +121,15 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=5&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
 			.replace("\"prop\":[]", "\"prop\":{}")
 			.replace("\"minutes_played\":(\\d+)".toRegex(), "\"minutes_played\": \"$1\"")
 			.replace("\"shutouts\":(\\d+)".toRegex(), "\"shutouts\": \"$1\"")
-
-	val sections: GoalieSections = decodeFromString<GoalieSections>(text)
+	val format = Json { isLenient = true }
+	val sections: GoalieSections = format.decodeFromString<GoalieSections>(text)
 	val namesNotToPrint = arrayOf(
 			"Empty Net ",
 			"Totals "
@@ -141,7 +142,7 @@ fun printGoalieStats(team: Team) {
 		if (goalie.name !in namesNotToPrint && goalie.active == "1") {
 			println("|-")
 			println("! scope=\"row\" style=\"text-align:left;\" | [[${getWikiName(goalie.name)}]]")
-			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.shootoutLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
+			println("| ${goalie.gamesPlayed} || ${goalie.minutesPlayed} || ${goalie.wins} || ${goalie.losses} || ${goalie.otLosses} || ${goalie.safeShootoutLosses} || ${goalie.goalsAgainst} || ${goalie.goalsAgainstAverage} || ${goalie.shots} || ${goalie.savePercentage} || ${goalie.shutouts} || ${goalie.goals} || ${goalie.assists} || ${goalie.penaltyMinutes}")
 		}
 	}
 

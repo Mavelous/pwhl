@@ -30,5 +30,7 @@ data class GoalieRow(
 		@SerialName("shootout_percentage") var shootoutPercentage: String? = null,
 		@SerialName("goals_against_average") var goalsAgainstAverage: String? = null,
 		@SerialName("rank") var rank: Int? = null
-
-)
+) {
+	val safeShootoutLosses: String?
+		get() = if (shootoutLosses == null) "0" else shootoutLosses
+}
