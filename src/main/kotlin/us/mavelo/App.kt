@@ -5,8 +5,8 @@ import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import us.mavelo.pwhl.json.skater.PrintableSkaterStats
 import us.mavelo.pwhl.json.skater.SkaterSections
-import java.lang.Integer.*
-import java.net.URL
+import java.lang.Integer.valueOf
+import java.net.URI
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -40,7 +40,7 @@ fun main() {
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
 	val text = url.readText().drop(2).dropLast(2)
 	val format = Json { isLenient = true }
 	val sections: SkaterSections = format.decodeFromString<SkaterSections>(text)
@@ -121,7 +121,7 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=6&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
