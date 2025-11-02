@@ -1,37 +1,37 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+
 plugins {
-    alias(libs.plugins.jvm)
-
-    application
-
-    kotlin("plugin.serialization") version "1.9.22"
+	kotlin("jvm") version "2.2.21"
+	kotlin("plugin.serialization") version "2.2.21"
+	application
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    implementation(libs.guava)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-    implementation("com.google.code.gson:gson:2.9.0")
-    implementation("org.json:json:20231013")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.22")
-}
+	implementation("com.google.guava:guava:32.1.2-jre")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+	implementation("com.google.code.gson:gson:2.10.1")
+	implementation("org.json:json:20231013")
+	implementation("org.jetbrains.kotlin:kotlin-reflect:2.2.21")
 
-testing {
-    suites {
-        val test by getting(JvmTestSuite::class) {
-            useKotlinTest("1.9.20")
-        }
-    }
+	testImplementation(kotlin("test"))
 }
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(21))
+	}
+}
+
+kotlin {
+	compilerOptions {
+		jvmTarget.set(JVM_21)
+	}
 }
 
 application {
-    mainClass.set("us.mavelo.AppKt")
+	mainClass.set("us.mavelo.AppKt")
 }
