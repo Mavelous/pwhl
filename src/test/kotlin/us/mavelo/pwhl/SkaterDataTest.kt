@@ -3,7 +3,7 @@ package us.mavelo.pwhl
 import kotlinx.serialization.json.Json.Default.decodeFromString
 import us.mavelo.pwhl.json.skater.SkaterRow
 import us.mavelo.pwhl.json.skater.SkaterSections
-import java.net.URL
+import java.net.URI
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -40,7 +40,7 @@ class SkaterDataTest {
 
 	@Test
 	fun canReadFromWebpageAndParseToJson() {
-		val webUrl = URL("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=2&position=skaters&statsType=standard&sort=goals&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1")
+		val webUrl = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=1&team=2&position=skaters&statsType=standard&sort=goals&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
 
 		var text = webUrl.readText()
 
