@@ -28,6 +28,7 @@ data class Headers(
 		@SerialName("faceoff_pct") var faceoffPct: FaceoffPct? = FaceoffPct(),
 		@SerialName("penalty_minutes_per_game") var penaltyMinutesPerGame: PenaltyMinutesPerGame? = PenaltyMinutesPerGame(),
 		var shots: Shots? = Shots(),
+		@SerialName("shots_blocked_by_player") var shotsBlockedByPlayer: ShootingPercentage? = ShootingPercentage(),
 		@SerialName("shooting_percentage") var shootingPercentage: ShootingPercentage? = ShootingPercentage(),
 		@SerialName("shootout_goals") var shootoutGoals: ShootoutGoals? = ShootoutGoals(),
 		@SerialName("shootout_attempts") var shootoutAttempts: ShootoutAttempts? = ShootoutAttempts(),

@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SkaterRow(
-
 		@SerialName("player_id") var playerId: String? = null,
 		var name: String? = null,
 		var active: String? = null,
@@ -17,6 +16,7 @@ data class SkaterRow(
 		var shots: String? = null,
 		var hits: String? = null,
 		@SerialName("ice_time_minutes_seconds") var iceTimeMinutesSeconds: String? = null,
+		@SerialName("shots_blocked_by_player") var shotsBlockedByPlayer: String? = null,
 		@SerialName("shooting_percentage") var shootingPercentage: String? = null,
 		var assists: String? = null,
 		var points: String? = null,
