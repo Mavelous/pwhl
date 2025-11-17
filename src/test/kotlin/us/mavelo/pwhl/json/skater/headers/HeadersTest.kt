@@ -10,6 +10,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.text.Charsets.UTF_8
 
+@kotlinx.serialization.ExperimentalSerializationApi
 class HeadersTest {
 	private val json = Json { encodeDefaults = true; explicitNulls = true }
 

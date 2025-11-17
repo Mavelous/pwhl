@@ -4,7 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TeamCode(
-
 		var properties: Properties? = Properties()
-
 )
