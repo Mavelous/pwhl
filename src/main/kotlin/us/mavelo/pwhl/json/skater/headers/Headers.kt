@@ -36,6 +36,8 @@ data class Headers(
 		@SerialName("shootout_percentage") var shootoutPercentage: ShootoutPercentage? = ShootoutPercentage(),
 		@SerialName("ice_time_minutes_seconds") var iceTimeMinutesSeconds: IceTimeMinutesSeconds? = IceTimeMinutesSeconds(),
 		var hits: Hits? = Hits(),
+		@SerialName("hits_per_game_avg") var hitsPerGameAvg: HitsPerGameAvg? = HitsPerGameAvg(),
+		@SerialName("ice_time_per_game_avg") var iceTimePerGameAvg: IceTimePerGameAvg? = IceTimePerGameAvg(),
 		@SerialName("player_id") var playerId: PlayerId? = PlayerId()
 
 )

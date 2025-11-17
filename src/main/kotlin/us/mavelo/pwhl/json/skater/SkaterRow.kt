@@ -24,6 +24,8 @@ data class SkaterRow(
 		@SerialName("plus_minus") var plusMinus: String? = null,
 		@SerialName("penalty_minutes") var penaltyMinutes: String? = null,
 		@SerialName("penalty_minutes_per_game") var penaltyMinutesPerGame: String? = null,
+		@SerialName("ice_time_per_game_avg") var iceTimePerGameAvg: String? = null,
+		@SerialName("hits_per_game_avg") var hitsPerGameAvg: String? = null,
 		@SerialName("power_play_goals") var powerPlayGoals: String? = null,
 		@SerialName("power_play_assists") var powerPlayAssists: String? = null,
 		@SerialName("short_handed_goals") var shortHandedGoals: String? = null,

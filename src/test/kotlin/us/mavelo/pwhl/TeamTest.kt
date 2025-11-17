@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class TeamTest {
 	@Test
 	fun allTeamsExist() {
-		assertEquals(6, Team.entries.size)
+		assertEquals(8, Team.entries.size)
 	}
 
 	@Test
@@ -55,5 +55,21 @@ class TeamTest {
 		assertEquals("#1A75BD", Team.TORONTO.topColor)
 		assertEquals("#000", Team.TORONTO.bottomColor)
 		assertEquals("toronto", Team.TORONTO.toString().lowercase())
+	}
+
+	@Test
+	fun vancouver() {
+		assertEquals(7, Team.VANCOUVER.teamNum)
+		assertEquals("#0F4777", Team.VANCOUVER.topColor)
+		assertEquals("#EEE9D8", Team.VANCOUVER.bottomColor)
+		assertEquals("vancouver", Team.VANCOUVER.toString().lowercase())
+	}
+
+	@Test
+	fun seattle() {
+		assertEquals(8, Team.SEATTLE.teamNum)
+		assertEquals("#0A5258", Team.SEATTLE.topColor)
+		assertEquals("#EEE9D8", Team.SEATTLE.bottomColor)
+		assertEquals("seattle", Team.SEATTLE.toString().lowercase())
 	}
 }

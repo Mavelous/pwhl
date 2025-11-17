@@ -1,0 +1,379 @@
+{
+	"rank": {
+		"properties": {
+			"key": "rank",
+			"hidden": false,
+			"class": "",
+			"label": " ",
+			"title": "Rank",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"rookie": {
+		"properties": {
+			"key": "rookie",
+			"hidden": false,
+			"class": "",
+			"label": "",
+			"title": "Rookie",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"active": {
+		"properties": {
+			"key": "active",
+			"hidden": false,
+			"class": "active-ht",
+			"label": "",
+			"title": "Active",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"name": {
+		"properties": {
+			"key": "name",
+			"hidden": false,
+			"class": "",
+			"label": "Name",
+			"title": "Name",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": "name"
+		}
+	},
+	"position": {
+		"properties": {
+			"key": "position",
+			"hidden": false,
+			"class": "",
+			"label": "Pos",
+			"title": "Position",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"team_code": {
+		"properties": {
+			"key": "team_code",
+			"hidden": false,
+			"class": "",
+			"label": "Team",
+			"title": "Name",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"games_played": {
+		"properties": {
+			"key": "games_played",
+			"hidden": false,
+			"class": "",
+			"label": "GP",
+			"title": "Games Played",
+			"sortable": true,
+			"align": "center",
+			"highlight": true,
+			"sortKey": "gp"
+		}
+	},
+	"goals": {
+		"properties": {
+			"key": "goals",
+			"hidden": false,
+			"class": "",
+			"label": "G",
+			"title": "Goals",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "goals"
+		}
+	},
+	"assists": {
+		"properties": {
+			"key": "assists",
+			"hidden": false,
+			"class": "",
+			"label": "A",
+			"title": "Assists",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "assists"
+		}
+	},
+	"points": {
+		"properties": {
+			"key": "points",
+			"hidden": false,
+			"class": "",
+			"label": "PTS",
+			"title": "Points",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "points"
+		}
+	},
+	"plus_minus": {
+		"properties": {
+			"key": "plus_minus",
+			"hidden": false,
+			"class": "",
+			"label": "+/-",
+			"title": "Plus/Minus",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "plus_minus"
+		}
+	},
+	"penalty_minutes": {
+		"properties": {
+			"key": "penalty_minutes",
+			"hidden": false,
+			"class": "",
+			"label": "PIM",
+			"title": "Penalty Minutes",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "pim"
+		}
+	},
+	"power_play_goals": {
+		"properties": {
+			"key": "power_play_goals",
+			"hidden": false,
+			"class": "",
+			"label": "PPG",
+			"title": "Power Play Goals",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "ppgoals"
+		}
+	},
+	"power_play_assists": {
+		"properties": {
+			"key": "power_play_assists",
+			"hidden": false,
+			"class": "",
+			"label": "PPA",
+			"title": "Power Play Assists",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "ppassists"
+		}
+	},
+	"short_handed_goals": {
+		"properties": {
+			"key": "short_handed_goals",
+			"hidden": false,
+			"class": "",
+			"label": "SHG",
+			"title": "Short Handed Goals",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "shgoals"
+		}
+	},
+	"short_handed_assists": {
+		"properties": {
+			"key": "short_handed_assists",
+			"hidden": false,
+			"class": "",
+			"label": "SHA",
+			"title": "Short Handed Assists",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "shassists"
+		}
+	},
+	"points_per_game": {
+		"properties": {
+			"key": "points_per_game",
+			"hidden": false,
+			"class": "",
+			"label": "Pt/G",
+			"title": "Points per Game",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "ptspg"
+		}
+	},
+	"faceoff_wins": {
+		"properties": {
+			"key": "faceoff_wins",
+			"hidden": false,
+			"class": "",
+			"label": "FOW",
+			"title": "WON",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "faceoff_wins"
+		}
+	},
+	"faceoff_attempts": {
+		"properties": {
+			"key": "faceoff_attempts",
+			"hidden": false,
+			"class": "",
+			"label": "FO",
+			"title": "Faceoff Attempts",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "faceoff_attempts"
+		}
+	},
+	"faceoff_pct": {
+		"properties": {
+			"key": "faceoff_pct",
+			"hidden": false,
+			"class": "",
+			"label": "WF%",
+			"title": "Won faceoffs percentage",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "faceoff_pct"
+		}
+	},
+	"penalty_minutes_per_game": {
+		"properties": {
+			"key": "penalty_minutes_per_game",
+			"hidden": false,
+			"class": "",
+			"label": "PIMPG",
+			"title": "Penalty Minutes per Game",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "pimpg"
+		}
+	},
+	"shots": {
+		"properties": {
+			"key": "shots",
+			"hidden": false,
+			"class": "",
+			"label": "SH",
+			"title": "Shots",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "shots"
+		}
+	},
+	"shooting_percentage": {
+		"properties": {
+			"key": "shooting_percentage",
+			"hidden": false,
+			"class": "",
+			"label": "SH%",
+			"title": "Shooting Percentage",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": "shooting_percentage"
+		}
+	},
+	"shots_blocked_by_player": {
+		"properties": {
+			"key": "shots_blocked_by_player",
+			"hidden": false,
+			"class": "",
+			"label": "BLK",
+			"title": "Blocked shots",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	},
+	"hits": {
+		"properties": {
+			"key": "hits",
+			"hidden": false,
+			"class": "",
+			"label": "Hits",
+			"title": "Hits",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": "hits"
+		}
+	},
+	"hits_per_game_avg": {
+		"properties": {
+			"key": "hits_per_game_avg",
+			"hidden": false,
+			"class": "",
+			"label": "H/GP",
+			"title": "Hits per Game",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": "hits_per_game_avg"
+		}
+	},
+	"ice_time_minutes_seconds": {
+		"properties": {
+			"key": "ice_time_minutes_seconds",
+			"hidden": false,
+			"class": "",
+			"label": "TOI",
+			"title": "TOI",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": "ice_time_minutes_seconds"
+		}
+	},
+	"ice_time_per_game_avg": {
+		"properties": {
+			"key": "ice_time_per_game_avg",
+			"hidden": false,
+			"class": "",
+			"label": "TOI/GP",
+			"title": "Time on Ice per Game ",
+			"sortable": true,
+			"align": "left",
+			"highlight": false,
+			"sortKey": "ice_time_per_game_avg"
+		}
+	},
+	"player_id": {
+		"properties": {
+			"key": "player_id",
+			"hidden": true,
+			"class": "",
+			"label": "",
+			"title": "",
+			"sortable": true,
+			"align": "center",
+			"highlight": false,
+			"sortKey": ""
+		}
+	}
+}
