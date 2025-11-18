@@ -5,6 +5,7 @@ import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import us.mavelo.pwhl.json.skater.PrintableSkaterStats
 import us.mavelo.pwhl.json.skater.SkaterSections
+import us.mavelo.pwhl.json.skater.headers.Position
 import java.lang.Integer.valueOf
 import java.net.URI
 import java.time.LocalDateTime
@@ -41,21 +42,21 @@ fun main() {
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
 	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=7&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
-	val text = url.readText().drop(2).dropLast(2)
+	val jsonFromUrl = url.readText().drop(2).dropLast(2)
 	val format = Json { isLenient = true }
-	val sections: SkaterSections = format.decodeFromString<SkaterSections>(text)
+	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
 	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
 
 	sections.sections[0].data.forEach { it ->
 		if (it.teams != null && it.teams!!.isNotEmpty()) {
-			if (it.row!!.position != "G") {
+			if (it.row!!.position != Position.GOALIE) {
 				if (it.teams!!.find { player -> player.active == "1" } != null) {
 					val teamStats = it.teams!!.find { player -> player.active == "1" }!!
 					skaterStats.add(PrintableSkaterStats(teamStats, it.row!!.name!!))
 				}
 			}
 		} else {
-			if (it.row!!.position != "G" && it.row!!.active == "1") {
+			if (it.row!!.position != Position.GOALIE && it.row!!.active == "1") {
 				skaterStats.add(PrintableSkaterStats(it.row!!))
 			}
 		}
