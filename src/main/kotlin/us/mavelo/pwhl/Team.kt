@@ -7,6 +7,6 @@ enum class Team(val teamNum: Int, val topColor: String = "#fff", val bottomColor
 	NEW_YORK(4, "#18B196", "#151E38"),
 	OTTAWA(5, "#BC1F1E", "#383334"),
 	TORONTO(6, "#1A75BD"),
-	VANCOUVER(7, "#0F4777", "#EEE9D8"),
+	VANCOUVER(9, "#0F4777", "#EEE9D8"),
 	SEATTLE(8, "#0A5258", "#EEE9D8"),
 }

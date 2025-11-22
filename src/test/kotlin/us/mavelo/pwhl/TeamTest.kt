@@ -59,7 +59,7 @@ class TeamTest {
 
 	@Test
 	fun vancouver() {
-		assertEquals(7, Team.VANCOUVER.teamNum)
+		assertEquals(9, Team.VANCOUVER.teamNum)
 		assertEquals("#0F4777", Team.VANCOUVER.topColor)
 		assertEquals("#EEE9D8", Team.VANCOUVER.bottomColor)
 		assertEquals("vancouver", Team.VANCOUVER.toString().lowercase())
