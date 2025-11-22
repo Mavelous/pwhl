@@ -14,10 +14,13 @@ import java.time.format.DateTimeFormatter
 class App {
 }
 
-fun main() {
+fun main(args: Array<String>) {
 	val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
 	val currentDate = LocalDateTime.now().format(formatter)
-	for (team in Team.entries) {
+
+	val teams: List<Team> = getTeamsFromArgs(args)
+
+	for (team in teams) {
 		println("****************")
 		println("[${team}]")
 		println("****************")
@@ -33,6 +36,16 @@ fun main() {
 		println("\n===Goaltenders===\n")
 		printGoalieStats(team)
 		println("\n")
+	}
+}
+
+fun getTeamsFromArgs(args: Array<String>): List<Team> {
+	return if (args.isEmpty()) {
+		Team.entries.toList()
+	} else {
+		Team.entries.filter { team ->
+			team.shortName == args.find { it.uppercase() == team.shortName }
+		}
 	}
 }
 
