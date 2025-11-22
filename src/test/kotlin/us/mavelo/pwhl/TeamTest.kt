@@ -20,8 +20,8 @@ class TeamTest {
 	@Test
 	fun minnesota() {
 		assertEquals(2, Team.MINNESOTA.teamNum)
-		assertEquals("#5A288D", Team.MINNESOTA.topColor)
-		assertEquals("#000", Team.MINNESOTA.bottomColor)
+		assertEquals("#250E62", Team.MINNESOTA.topColor)
+		assertEquals("#A77BCA", Team.MINNESOTA.bottomColor)
 		assertEquals("minnesota", Team.MINNESOTA.toString().lowercase())
 	}
 
