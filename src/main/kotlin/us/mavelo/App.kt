@@ -41,7 +41,7 @@ fun main() {
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=7&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
+	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=8&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
 	val jsonFromUrl = url.readText().drop(2).dropLast(2)
 	val format = Json { isLenient = true }
 	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
@@ -71,7 +71,7 @@ private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
 private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterStats>) {
 	println("""
 	{| class="wikitable sortable" style="text-align:center;"
-	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-stats" />
+	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -103,7 +103,7 @@ fun printGoalieStats(team: Team) {
 	val tableHeader = """
 	{| class="wikitable sortable" style="text-align:center"
 	|-
-	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Playoffs<ref name="${team.toString().lowercase()}-goalie-stats" />
+	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -122,7 +122,7 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=7&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
+	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=8&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
