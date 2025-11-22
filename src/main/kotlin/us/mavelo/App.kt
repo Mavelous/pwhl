@@ -12,10 +12,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class App {
-	val greeting: String
-		get() {
-			return "Hello World!"
-		}
 }
 
 fun main() {

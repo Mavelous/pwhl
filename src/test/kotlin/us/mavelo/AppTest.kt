@@ -5,12 +5,6 @@ import kotlin.test.assertEquals
 
 class AppTest {
 	@Test
-	fun appHasAGreeting() {
-		val classUnderTest = App()
-		assertEquals("Hello World!", classUnderTest.greeting)
-	}
-
-	@Test
 	fun getWikiName_returnsDabNameFormat() {
 		val dabNames = arrayOf(
 				"Abby Cook",
