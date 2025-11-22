@@ -151,6 +151,14 @@ fun printGoalieStats(team: Team) {
 }
 
 fun getWikiName(name: String?): String? {
+	var result = disambiguateNames(name)
+
+	result = replaceAccents(result!!)
+
+	return result
+}
+
+fun disambiguateNames(name: String?): String? {
 	val dabNames = arrayOf(
 			"Abby Cook",
 			"Brittany Howard",
@@ -170,21 +178,24 @@ fun getWikiName(name: String?): String? {
 		return "$name (ice hockey)|$name"
 	}
 
+	return name
+}
+
+fun replaceAccents(name: String?): String? {
 	val accentedNames = mapOf(
-		"Chloe Aurard" to "Chloé Aurard",
-		"Abby Boreen" to "Abigail Boreen",
-		"Clair Degeorge" to "Clair DeGeorge",
-		"Daniela Pejsova" to "Daniela Pejšová",
-		"Elizabeth Giguère" to "Élizabeth Giguère",
-		"Jessica Digirolamo" to "Jessica DiGirolamo",
-		"Klara Hymlarova" to "Klára Hymlárová",
-		"Kelly Ann Nadeau" to "Kelly-Ann Nadeau",
-		"Maja Nylen Persson" to "Maja Nylén Persson",
-		"Klara Peslarova" to "Klára Peslarová",
+			"Chloe Aurard" to "Chloé Aurard",
+			"Clair Degeorge" to "Clair DeGeorge",
+			"Daniela Pejsova" to "Daniela Pejšová",
+			"Elizabeth Giguère" to "Élizabeth Giguère",
+			"Jessica Digirolamo" to "Jessica DiGirolamo",
+			"Klara Hymlarova" to "Klára Hymlárová",
+			"Kelly Ann Nadeau" to "Kelly-Ann Nadeau",
+			"Maja Nylen Persson" to "Maja Nylén Persson",
+			"Klara Peslarova" to "Klára Peslarová",
 	)
 	if (name in accentedNames) {
 		return accentedNames[name]
 	}
-
 	return name
 }
+
