@@ -1,6 +1,8 @@
 package us.mavelo
 
 import kotlinx.serialization.json.Json
+import us.mavelo.pwhl.GoalieUrl
+import us.mavelo.pwhl.SkaterUrl
 import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.goalie.GoalieSections
 import us.mavelo.pwhl.json.skater.PrintableSkaterStats
@@ -15,25 +17,10 @@ class App {
 }
 
 fun main(args: Array<String>) {
-	val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
-	val currentDate = LocalDateTime.now().format(formatter)
-
 	val teams: List<Team> = getTeamsFromArgs(args)
 
 	for (team in teams) {
-		println("****************")
-		println("[${team}]")
-		println("****************")
-
-		println("""==Player statistics==
-
-{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
-
-===Skaters===
-""")
-		val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
-		printSkaterStats(team, skaterStats)
-		println("\n===Goaltenders===\n")
+		printSkaterStats(team)
 		printGoalieStats(team)
 		println("\n")
 	}
@@ -50,7 +37,7 @@ fun getTeamsFromArgs(args: Array<String>): List<Team> {
 }
 
 private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=8&team=${team.teamNum}&position=skaters&statsType=standard&sort=points&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
+	val url = URI(SkaterUrl().getStatsUrl(team.teamNum)).toURL()
 	val jsonFromUrl = url.readText().drop(2).dropLast(2)
 	val format = Json { isLenient = true }
 	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
@@ -77,7 +64,11 @@ private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
 	return skaterStats
 }
 
-private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterStats>) {
+private fun printSkaterStats(team: Team) {
+	printTeamHeader(team)
+
+	val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
+
 	println("""
 	{| class="wikitable sortable" style="text-align:center;"
 	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
@@ -108,7 +99,24 @@ private fun printSkaterStats(team: Team, skaterStats: ArrayList<PrintableSkaterS
 	println("|}")
 }
 
+private fun printTeamHeader(team: Team) {
+	println("****************")
+	println("[${team}]")
+	println("****************")
+
+	val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
+	val currentDate = LocalDateTime.now().format(formatter)
+	println("""==Player statistics==
+
+{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
+
+===Skaters===
+""")
+}
+
 fun printGoalieStats(team: Team) {
+	println("\n===Goaltenders===\n")
+
 	val tableHeader = """
 	{| class="wikitable sortable" style="text-align:center"
 	|-
@@ -131,7 +139,7 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URI("https://lscluster.hockeytech.com/feed/index.php?feed=statviewfeed&view=players&season=8&team=${team.teamNum}&position=goalies&statsType=standard&sort=gp&league_id=1&lang=en&division=-1&key=694cfeed58c932ee&client_code=pwhl&league_id=1").toURL()
+	val url = URI(GoalieUrl().getStatsUrl(team.teamNum)).toURL()
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
