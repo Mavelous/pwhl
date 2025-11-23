@@ -36,34 +36,6 @@ fun getTeamsFromArgs(args: Array<String>): List<Team> {
 	}
 }
 
-private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URI(SkaterUrl().getStatsUrl(team.teamNum)).toURL()
-	val jsonFromUrl = url.readText().drop(2).dropLast(2)
-	val format = Json { isLenient = true }
-	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
-	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
-
-	sections.sections[0].data.forEach { it ->
-		if (it.teams != null && it.teams!!.isNotEmpty()) {
-			if (it.row!!.position != Position.GOALIE) {
-				if (it.teams!!.find { player -> player.active == "1" } != null) {
-					val teamStats = it.teams!!.find { player -> player.active == "1" }!!
-					skaterStats.add(PrintableSkaterStats(teamStats, it.row!!.name!!))
-				}
-			}
-		} else {
-			if (it.row!!.position != Position.GOALIE && it.row!!.active == "1") {
-				skaterStats.add(PrintableSkaterStats(it.row!!))
-			}
-		}
-	}
-
-	skaterStats.sortByDescending { it -> valueOf(it.goals) }
-	skaterStats.sortByDescending { it -> valueOf(it.points) }
-
-	return skaterStats
-}
-
 private fun printSkaterStats(team: Team) {
 	printTeamHeader(team)
 
@@ -97,21 +69,6 @@ private fun printSkaterStats(team: Team) {
 		println(" || ${it.penaltyMinutes}")
 	}
 	println("|}")
-}
-
-private fun printTeamHeader(team: Team) {
-	println("****************")
-	println("[${team}]")
-	println("****************")
-
-	val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
-	val currentDate = LocalDateTime.now().format(formatter)
-	println("""==Player statistics==
-
-{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
-
-===Skaters===
-""")
 }
 
 fun printGoalieStats(team: Team) {
@@ -165,6 +122,50 @@ fun printGoalieStats(team: Team) {
 	}
 
 	println("|}")
+}
+
+private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
+	val url = URI(SkaterUrl().getStatsUrl(team.teamNum)).toURL()
+	val jsonFromUrl = url.readText().drop(2).dropLast(2)
+	val format = Json { isLenient = true }
+	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
+	var skaterStats: ArrayList<PrintableSkaterStats> = arrayListOf()
+
+	sections.sections[0].data.forEach { it ->
+		if (it.teams != null && it.teams!!.isNotEmpty()) {
+			if (it.row!!.position != Position.GOALIE) {
+				if (it.teams!!.find { player -> player.active == "1" } != null) {
+					val teamStats = it.teams!!.find { player -> player.active == "1" }!!
+					skaterStats.add(PrintableSkaterStats(teamStats, it.row!!.name!!))
+				}
+			}
+		} else {
+			if (it.row!!.position != Position.GOALIE && it.row!!.active == "1") {
+				skaterStats.add(PrintableSkaterStats(it.row!!))
+			}
+		}
+	}
+
+	skaterStats.sortByDescending { it -> valueOf(it.goals) }
+	skaterStats.sortByDescending { it -> valueOf(it.points) }
+
+	return skaterStats
+}
+
+
+private fun printTeamHeader(team: Team) {
+	println("****************")
+	println("[${team}]")
+	println("****************")
+
+	val formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy")
+	val currentDate = LocalDateTime.now().format(formatter)
+	println("""==Player statistics==
+
+{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
+
+===Skaters===
+""")
 }
 
 fun getWikiName(name: String?): String? {
