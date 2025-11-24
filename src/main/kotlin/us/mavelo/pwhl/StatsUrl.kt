@@ -1,10 +1,9 @@
 package us.mavelo.pwhl
 
-abstract class StatsUrl {
+abstract class StatsUrl(currentSeason: Season) {
 	val baseUrl: String = "https://lscluster.hockeytech.com/feed/index.php"
 	val feed: String = "statviewfeed"
 	val view: String = "players"
-	val currentSeason: Season = Season.SEASON_2025_26_REGULAR_SEASON
 	val season: String = currentSeason.id.toString()
 	val team: String = "1"
 	val statsType: String = "standard"

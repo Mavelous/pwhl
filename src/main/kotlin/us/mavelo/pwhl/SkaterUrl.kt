@@ -1,6 +1,6 @@
 package us.mavelo.pwhl
 
-class SkaterUrl: StatsUrl() {
+class SkaterUrl(currentSeason: Season) : StatsUrl(currentSeason) {
 	override fun getPosition(): String {
 		return "skaters"
 	}

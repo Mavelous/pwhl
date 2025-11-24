@@ -2,6 +2,7 @@ package us.mavelo
 
 import kotlinx.serialization.json.Json
 import us.mavelo.pwhl.GoalieUrl
+import us.mavelo.pwhl.Season
 import us.mavelo.pwhl.SkaterUrl
 import us.mavelo.pwhl.Team
 import us.mavelo.pwhl.json.goalie.GoalieSections
@@ -17,11 +18,12 @@ class App {
 }
 
 fun main(args: Array<String>) {
+	val currentSeason: Season = Season.SEASON_2025_26_REGULAR_SEASON
 	val teams: List<Team> = getTeamsFromArgs(args)
 
 	for (team in teams) {
-		printSkaterStats(team)
-		printGoalieStats(team)
+		printSkaterStats(team, currentSeason)
+		printGoalieStats(team, currentSeason)
 		println("\n")
 	}
 }
@@ -36,14 +38,14 @@ fun getTeamsFromArgs(args: Array<String>): List<Team> {
 	}
 }
 
-private fun printSkaterStats(team: Team) {
+private fun printSkaterStats(team: Team, currentSeason: Season) {
 	printTeamHeader(team)
 
-	val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team)
+	val skaterStats: ArrayList<PrintableSkaterStats> = collectSortedSkaters(team, currentSeason)
 
 	println("""
 	{| class="wikitable sortable" style="text-align:center;"
-	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-stats" />
+	|+ style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|${currentSeason.type}<ref name="${team.toString().lowercase()}-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -71,13 +73,13 @@ private fun printSkaterStats(team: Team) {
 	println("|}")
 }
 
-fun printGoalieStats(team: Team) {
+fun printGoalieStats(team: Team, currentSeason: Season) {
 	println("\n===Goaltenders===\n")
 
 	val tableHeader = """
 	{| class="wikitable sortable" style="text-align:center"
 	|-
-	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|Regular season<ref name="${team.toString().lowercase()}-goalie-stats" />
+	|+ colspan="16" style="background:#fff; border-top:${team.topColor} 5px solid; border-bottom:${team.bottomColor} 5px solid;"|${currentSeason.type}<ref name="${team.toString().lowercase()}-goalie-stats" />
 	|-
 	! scope="col" | Player
 	! scope="col" | {{abbr|GP|Games played}}
@@ -96,7 +98,7 @@ fun printGoalieStats(team: Team) {
 	! scope="col" | {{abbr|PIM|Penalty minutes}}
 """.trimIndent()
 
-	val url = URI(GoalieUrl().getStatsUrl(team.teamNum)).toURL()
+	val url = URI(GoalieUrl(currentSeason).getStatsUrl(team.teamNum)).toURL()
 	val text = url.readText()
 			.drop(2)
 			.dropLast(2)
@@ -124,8 +126,8 @@ fun printGoalieStats(team: Team) {
 	println("|}")
 }
 
-private fun collectSortedSkaters(team: Team): ArrayList<PrintableSkaterStats> {
-	val url = URI(SkaterUrl().getStatsUrl(team.teamNum)).toURL()
+private fun collectSortedSkaters(team: Team, currentSeason: Season): ArrayList<PrintableSkaterStats> {
+	val url = URI(SkaterUrl(currentSeason).getStatsUrl(team.teamNum)).toURL()
 	val jsonFromUrl = url.readText().drop(2).dropLast(2)
 	val format = Json { isLenient = true }
 	val sections: SkaterSections = format.decodeFromString<SkaterSections>(jsonFromUrl)
