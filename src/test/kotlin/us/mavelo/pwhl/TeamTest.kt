@@ -13,8 +13,8 @@ class TeamTest {
 	fun boston() {
 		assertEquals(1, Team.BOSTON.teamNum)
 		assertEquals("BOS", Team.BOSTON.shortName)
-		assertEquals("#164E36", Team.BOSTON.topColor)
-		assertEquals("#C3C6CC", Team.BOSTON.bottomColor)
+		assertEquals("#173F35", Team.BOSTON.topColor)
+		assertEquals("#B5E3D8", Team.BOSTON.bottomColor)
 		assertEquals("boston", Team.BOSTON.toString().lowercase())
 		assertEquals(Team.BOSTON, Team.fromShortName("BOS"))
 	}
