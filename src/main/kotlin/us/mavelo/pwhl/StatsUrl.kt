@@ -4,7 +4,8 @@ abstract class StatsUrl {
 	val baseUrl: String = "https://lscluster.hockeytech.com/feed/index.php"
 	val feed: String = "statviewfeed"
 	val view: String = "players"
-	val season: String = "8"
+	val currentSeason: Season = Season.SEASON_2025_26_REGULAR_SEASON
+	val season: String = currentSeason.id.toString()
 	val team: String = "1"
 	val statsType: String = "standard"
 	val leagueId: String = "1"
