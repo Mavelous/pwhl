@@ -173,12 +173,13 @@ private fun printTeamHeader(team: Team) {
 fun getWikiName(name: String?): String? {
 	var result = disambiguateNames(name)
 
+	result = correctWikiName(result!!)
 	result = replaceAccents(result!!)
 
 	return result
 }
 
-fun disambiguateNames(name: String?): String? {
+private fun disambiguateNames(name: String?): String? {
 	val dabNames = arrayOf(
 			"Abby Cook",
 			"Brittany Howard",
@@ -201,21 +202,36 @@ fun disambiguateNames(name: String?): String? {
 	return name
 }
 
-fun replaceAccents(name: String?): String? {
+private fun correctWikiName(name: String?): String? {
+	val correctNames = mapOf(
+			"Clair Degeorge" to "Clair DeGeorge",
+			"Jessica Digirolamo" to "Jessica DiGirolamo",
+			"Kelly Ann Nadeau" to "Kelly-Ann Nadeau",
+			"Kathryn Reilly" to "Kate Reilly",
+			"Madison Samoskevich" to "Maddy Samoskevich",
+	)
+
+	if (name in correctNames) {
+		return correctNames[name]
+	}
+
+	return name
+}
+
+private fun replaceAccents(name: String?): String? {
 	val accentedNames = mapOf(
 			"Chloe Aurard" to "Chloé Aurard",
-			"Clair Degeorge" to "Clair DeGeorge",
 			"Daniela Pejsova" to "Daniela Pejšová",
 			"Elizabeth Giguère" to "Élizabeth Giguère",
-			"Jessica Digirolamo" to "Jessica DiGirolamo",
 			"Klara Hymlarova" to "Klára Hymlárová",
-			"Kelly Ann Nadeau" to "Kelly-Ann Nadeau",
 			"Maja Nylen Persson" to "Maja Nylén Persson",
 			"Klara Peslarova" to "Klára Peslarová",
 	)
+
 	if (name in accentedNames) {
 		return accentedNames[name]
 	}
+
 	return name
 }
 

@@ -60,6 +60,28 @@ class AppTest {
 	}
 
 	@Test
+	fun getWikiName_returnsCorrectWikiName() {
+		val inputs = arrayOf(
+				"Clair Degeorge",
+				"Jessica Digirolamo",
+				"Kelly Ann Nadeau",
+				"Kathryn Reilly",
+				"Madison Samoskevich",
+		)
+		val expected = arrayOf(
+				"Clair DeGeorge",
+				"Jessica DiGirolamo",
+				"Kelly-Ann Nadeau",
+				"Kate Reilly",
+				"Maddy Samoskevich",
+		)
+
+		for (i in inputs.indices) {
+			assertEquals(expected[i], getWikiName(inputs[i]))
+		}
+	}
+
+	@Test
 	fun getWikiName_replacesWithAccentedName() {
 		val unaccentedNames = arrayOf(
 				"Chloe Aurard",
