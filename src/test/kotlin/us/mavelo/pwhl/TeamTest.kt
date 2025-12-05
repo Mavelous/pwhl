@@ -33,8 +33,8 @@ class TeamTest {
 	fun montreal() {
 		assertEquals(3, Team.MONTREAL.teamNum)
 		assertEquals("MTL", Team.MONTREAL.shortName)
-		assertEquals("#651517", Team.MONTREAL.topColor)
-		assertEquals("#000", Team.MONTREAL.bottomColor)
+		assertEquals("#862633", Team.MONTREAL.topColor)
+		assertEquals("#E1D3C4", Team.MONTREAL.bottomColor)
 		assertEquals("montreal", Team.MONTREAL.toString().lowercase())
 		assertEquals(Team.MONTREAL, Team.fromShortName("MTL"))
 	}
@@ -43,8 +43,8 @@ class TeamTest {
 	fun newYork() {
 		assertEquals(4, Team.NEW_YORK.teamNum)
 		assertEquals("NYC", Team.NEW_YORK.shortName)
-		assertEquals("#18B196", Team.NEW_YORK.topColor)
-		assertEquals("#151E38", Team.NEW_YORK.bottomColor)
+		assertEquals("#00BFB3", Team.NEW_YORK.topColor)
+		assertEquals("#041E42", Team.NEW_YORK.bottomColor)
 		assertEquals("new_york", Team.NEW_YORK.toString().lowercase())
 		assertEquals(Team.NEW_YORK, Team.fromShortName("NYC"))
 	}
@@ -53,8 +53,8 @@ class TeamTest {
 	fun ottawa() {
 		assertEquals(5, Team.OTTAWA.teamNum)
 		assertEquals("OTT", Team.OTTAWA.shortName)
-		assertEquals("#BC1F1E", Team.OTTAWA.topColor)
-		assertEquals("#383334", Team.OTTAWA.bottomColor)
+		assertEquals("#A6192E", Team.OTTAWA.topColor)
+		assertEquals("#4B4F54", Team.OTTAWA.bottomColor)
 		assertEquals("ottawa", Team.OTTAWA.toString().lowercase())
 		assertEquals(Team.OTTAWA, Team.fromShortName("OTT"))
 	}
@@ -63,8 +63,8 @@ class TeamTest {
 	fun toronto() {
 		assertEquals(6, Team.TORONTO.teamNum)
 		assertEquals("TOR", Team.TORONTO.shortName)
-		assertEquals("#1A75BD", Team.TORONTO.topColor)
-		assertEquals("#000", Team.TORONTO.bottomColor)
+		assertEquals("#0067B9", Team.TORONTO.topColor)
+		assertEquals("#0C2340", Team.TORONTO.bottomColor)
 		assertEquals("toronto", Team.TORONTO.toString().lowercase())
 		assertEquals(Team.TORONTO, Team.fromShortName("TOR"))
 	}
@@ -83,8 +83,8 @@ class TeamTest {
 	fun seattle() {
 		assertEquals(8, Team.SEATTLE.teamNum)
 		assertEquals("SEA", Team.SEATTLE.shortName)
-		assertEquals("#0A5258", Team.SEATTLE.topColor)
-		assertEquals("#EEE9D8", Team.SEATTLE.bottomColor)
+		assertEquals("#0C5256", Team.SEATTLE.topColor)
+		assertEquals("#E1DBC9", Team.SEATTLE.bottomColor)
 		assertEquals("seattle", Team.SEATTLE.toString().lowercase())
 		assertEquals(Team.SEATTLE, Team.fromShortName("SEA"))
 	}
