@@ -34,7 +34,7 @@ class TeamTest {
 		assertEquals(3, Team.MONTREAL.teamNum)
 		assertEquals("MTL", Team.MONTREAL.shortName)
 		assertEquals("#862633", Team.MONTREAL.topColor)
-		assertEquals("#E1D3C4", Team.MONTREAL.bottomColor)
+		assertEquals("#041E42", Team.MONTREAL.bottomColor)
 		assertEquals("montreal", Team.MONTREAL.toString().lowercase())
 		assertEquals(Team.MONTREAL, Team.fromShortName("MTL"))
 	}
