@@ -18,4 +18,9 @@ jobs:
           cache: 'gradle'
 
       - name: Build with Gradle
-        run: ./gradlew run --no-daemon --args="MIN"
+        run: |
+          ./gradlew run --no-daemon --args="MIN" | tee gradle-output.txt
+          echo "### Gradle output" >> $GITHUB_STEP_SUMMARY
+          echo '```text' >> $GITHUB_STEP_SUMMARY
+          tail -n +1 gradle-output.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
