@@ -164,7 +164,7 @@ private fun printTeamHeader(team: Team) {
 	val currentDate = LocalDateTime.now().format(formatter)
 	println("""==Player statistics==
 
-{{Updated|${currentDate}|}}<ref name="${team.toString().lowercase()}-stats" />
+{{Updated|${currentDate}}}<ref name="${team.toString().lowercase()}-stats" />
 
 ===Skaters===
 """)
