@@ -1,6 +1,7 @@
 package us.mavelo
 
 import kotlinx.serialization.json.Json
+import org.flywaydb.core.Flyway
 import us.mavelo.pwhl.GoalieUrl
 import us.mavelo.pwhl.Season
 import us.mavelo.pwhl.SkaterUrl
@@ -13,11 +14,41 @@ import java.lang.Integer.valueOf
 import java.net.URI
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Properties
 
 class App {
 }
 
+fun loadDatabaseProperties(): Map<String, String> {
+	val properties = Properties()
+	val configStream = App::class.java.classLoader.getResourceAsStream("application.properties")
+	if (configStream != null) {
+		properties.load(configStream)
+		configStream.close()
+	} else {
+		throw IllegalStateException("application.properties not found in classpath")
+	}
+	return properties.toMap().mapKeys { it.key.toString() }.mapValues { it.value.toString() }
+}
+
 fun main(args: Array<String>) {
+	// Load PostgreSQL JDBC driver
+	Class.forName("org.postgresql.Driver")
+
+	// Load database configuration from properties
+	val dbConfig = loadDatabaseProperties()
+	val dbUrl = dbConfig["db.url"] ?: throw IllegalStateException("db.url not configured in application.properties")
+	val dbUsername = dbConfig["db.username"] ?: throw IllegalStateException("db.username not configured in application.properties")
+	val dbPassword = dbConfig["db.password"] ?: ""
+
+	// Initialize Flyway and run migrations
+	val flyway = Flyway.configure()
+		.dataSource(dbUrl, dbUsername, dbPassword)
+		.load()
+
+	flyway.migrate()
+
+	// Main application logic
 	val currentSeason: Season = Season.SEASON_2025_26_REGULAR_SEASON
 	val teams: List<Team> = getTeamsFromArgs(args)
 

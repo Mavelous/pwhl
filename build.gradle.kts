@@ -16,8 +16,13 @@ dependencies {
 	implementation("com.google.code.gson:gson:2.10.1")
 	implementation("org.json:json:20231013")
 	implementation("org.jetbrains.kotlin:kotlin-reflect:2.2.21")
+	implementation("org.flywaydb:flyway-core:10.10.0")
+	implementation("org.flywaydb:flyway-database-postgresql:10.10.0")
+	implementation("org.postgresql:postgresql:42.7.2")
 
 	testImplementation(kotlin("test"))
+	testImplementation("io.mockk:mockk:1.13.8")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
 }
 
 java {
