@@ -7,7 +7,7 @@ class SeasonTest {
 	@Test
 	fun correctNumberOfSeason() {
 		val seasons = Season.entries
-		assertEquals(8, seasons.size)
+		assertEquals(9, seasons.size)
 	}
 
 	@Test
@@ -80,5 +80,14 @@ class SeasonTest {
 		assertEquals(8, season.id)
 		assertEquals("2025–26 Regular Season", season.title)
 		assertEquals("Regular Season", season.type)
+	}
+
+	@Test
+	fun ninthSeason() {
+		val season = Season.values()[8]
+		assertEquals(Season.SEASON_2026_PLAYOFFS, season)
+		assertEquals(9, season.id)
+		assertEquals("2026 Playoffs", season.title)
+		assertEquals("Playoffs", season.type)
 	}
 }

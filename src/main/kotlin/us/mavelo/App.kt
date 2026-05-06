@@ -14,7 +14,7 @@ import java.lang.Integer.valueOf
 import java.net.URI
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Properties
+import java.util.*
 
 class App {
 }
@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
 	flyway.migrate()
 
 	// Main application logic
-	val currentSeason: Season = Season.SEASON_2025_26_REGULAR_SEASON
+	val currentSeason: Season = Season.SEASON_2026_PLAYOFFS
 	val teams: List<Team> = getTeamsFromArgs(args)
 
 	for (team in teams) {
